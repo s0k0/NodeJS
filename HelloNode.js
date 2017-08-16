@@ -1,16 +1,25 @@
 
 //Load HTTP module
 var http = require("http");
+var colors = require("colors");
 
 //Create HTTP server and listen on port 8000 for requests
 http.createServer(function (request, response) {
 
-    // Set the response HTTP header with HTTP status and Content type
-    response.writeHead(200, {'Content-Type': 'text/plain'});
+    if(request.url === '/'){
+        // Set the response HTTP header with HTTP status and Content type
+        response.writeHead(200, {'Content-Type': 'text/html'});
+        // Send the response body "Hello World"
+        response.end('Hello <strong>World</strong>\n');
+    }else if(request.url === '/goodbye'){
+        // Set the response HTTP header with HTTP status and Content type
+        response.writeHead(200, {'Content-Type': 'text/html'});
+        // Send the response body "Hello World"
+        response.end('Goodbye <strong>World</strong>\n');
+    }
 
-    // Send the response body "Hello World"
-    response.end('Hello World\n');
 }).listen(8000);
 
 // Print URL for accessing server
-console.log('Server running at http://127.0.0.1:8000/')
+console.log('Server running at http://127.0.0.1:8000/');
+console.log('Hello Rainbow!'.rainbow);
